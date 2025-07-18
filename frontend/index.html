@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Consultar Equipo</h1>
+    <input id="hostname" placeholder="Ej: HP368">
+    <button onclick="consultar()">Buscar</button>
+    <pre id="resultado"></pre>
+
+    <script>
+        async function consultar() {
+            const hostname = document.getElementById("hostname").value;
+            const response = await fetch(`http://localhost:8000/equipo/${hostname}`);
+            const data = await response.json();
+            document.getElementById("resultado").innerText = JSON.stringify(data, null, 2);
+        }
+    </script>
+</body>
+</html>
